@@ -1,0 +1,1 @@
+var express=require("express"),router=express.Router();router.get("/",function(e,r,o){r.render("game_form",{module_name:"game-form",data_conf:JSON.stringify({example:"test"}),js_files:"/js/game_form-min.js",css_files:"/css/game_form-min.css"})}),router.post("/",function(e,r){console.log("req received"),console.log(e.body)}),module.exports=router;
