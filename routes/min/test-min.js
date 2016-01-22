@@ -1,0 +1,1 @@
+var express=require("express"),router=express.Router();router.get("/",function(e,o,r){console.log("get")}),router.put("/",function(e,o,r){console.log("put")}),router.put("/",function(e,o,r){console.log("post")}),module.exports=router;

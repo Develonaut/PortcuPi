@@ -1,0 +1,11 @@
+{{!-- {{log this}} --}}
+<div class="mod {{#if mod_name}}{{mod_name}}{{/if}}"   {{#if data_conf}}data-conf="{{data_conf}}"{{/if}}>
+  <ul>
+  {{#each data}}
+    <li data-game-id="{{this.id}}">
+        <span>{{this.GameTitle}}</span>
+        <span>{{this.Platform}}</span>
+    </li>
+  {{/each}}
+  </ul>
+</div>

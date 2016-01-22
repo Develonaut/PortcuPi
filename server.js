@@ -7,25 +7,23 @@ var bodyParser = require('body-parser');
 
 var routes = require('./routes/index');
 var users = require('./routes/users');
-var fourofour = require('./routes/404.js')
+var fourofour = require('./routes/oops.js')
 
 var server = express();
+
+// set global variables files here:
+// var exports.utils = require(path.join(__dirname, 'private', 'js', 'utils'));
 
 // view engine setup
 server.set('views', path.join(__dirname, 'views'));
 server.set('view engine', 'hbs');
 
-server.use(bodyParser.json()); // to support JSON-encoded bodies
-server.use(bodyParser.urlencoded({ // to support URL-encoded bodies
-  extended: true
-}));
-
 server.use(favicon(path.join(__dirname,'public','images','favicon.ico')));
+server.use(express.static(path.join(__dirname, 'public')));
 server.use(logger('dev'));
 server.use(bodyParser.json());
 server.use(bodyParser.urlencoded({ extended: false }));
 server.use(cookieParser());
-server.use(express.static(path.join(__dirname, 'public')));
 
 server.use('/', routes);
 server.use('/users', users);
