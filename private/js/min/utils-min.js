@@ -1,1 +1,0 @@
-module.exports={buildModConf:function(e,n,o,t,f,d){var e="undefined"==typeof e||"string"!=typeof e?null:e,n=null,o="undefined"==typeof o||o.constructor!==Array?[]:o,t="undefined"==typeof t||t.constructor!==Array?[]:t,f="undefined"==typeof f||"object"!=typeof f?null:f,u={mod_name:e,data_conf:n,js_files:o,css_files:t,data:f};return"undefined"!=typeof d&&(u.layout=d),u}};

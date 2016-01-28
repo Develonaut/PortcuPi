@@ -1,0 +1,1 @@
+var express=require("express"),router=express.Router();router.get("/",function(e,r,o){r.send("respond with a fuck off"),console.log(e.game_name)}),module.exports=router;

@@ -1,10 +1,10 @@
-@import "colors";
+@import "common";
 
-.search-container {
+.game-form {
   position: relative;
   display: inline-block; 
   border: 0px solid #ffffff;
-  color: #ffffff;
+  padding: 15px;
   -webkit-border-radius: 0px;
   -moz-border-radius: 0px;
   font-family: 'Helvetica Neue',Helvetica,sans-serif;
@@ -15,6 +15,7 @@
   -webkit-align-self: center;
   -ms-flex-item-align: center;
   align-self: center;
+  background-color: $secondary-pink;
   
   .form-field {
      border: 1px solid #ffffff;
@@ -42,7 +43,7 @@
       }
   .form-title {
      margin-bottom:10px;
-     color: $text-white;
+     color: $main-white-text;
      }
   .submit-container {
      margin:8px 0;

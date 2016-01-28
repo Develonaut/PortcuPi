@@ -1,0 +1,21 @@
+@import "common";
+
+.result-list {
+  padding: 0;
+
+  ul {
+    padding: 0;
+
+    .result-item {
+      list-style: none;
+      padding: 10px 15px;
+      background-color: gray;
+      border-bottom: 1px solid black;
+    
+    &:last-of-type {
+      border-bottom: none;
+    }
+
+    }
+  }
+}

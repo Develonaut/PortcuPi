@@ -1,0 +1,57 @@
+footer {
+  background: $main-red;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  padding: 40px 0px 120px 0px;
+
+
+  .footer-main {
+    max-width: $max-page-width;
+    width: 100%;
+    -webkit-align-self: center;
+    -ms-flex-item-align: center;
+    align-self: center;
+  
+    .support-us,
+    .who-we-are,
+    .learn-more,
+    .raspberry-pi {
+      width: 100%;
+      max-width: 150px;
+      margin-right: 32px;
+    }
+
+    .share {
+      width: 100%;
+      max-width: 336px;
+    }
+
+    ul {
+      margin: 0;
+      padding: 0;
+
+    li {
+      list-style: none;
+      font-size: 12px;
+
+        &:first-of-type {
+          margin-bottom: 10px;
+          color: $main-white-text;
+          text-transform: uppercase;
+        }
+
+        a {
+          text-decoration: none;
+          color: $main-gray-text;
+        }
+
+      }
+    }
+  }
+
+  .footer-secondary {
+    background: $main-white;
+  }
+
+}

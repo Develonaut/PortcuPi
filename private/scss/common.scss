@@ -1,5 +1,15 @@
+$max-page-width: 1060px;
+
+// utility imports i.e colors/fonts
 @import "colors";
 @import "normalize";
+@import "icons";
+
+html {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: 300;
+  letter-spacing: 0.8px;
+}
 
 html,
 body {
@@ -9,24 +19,109 @@ body {
 }
 
 body {
-  background-color: #25354b;
-  display: -ms-flexbox;
-    display: -webkit-flex;
-    display: flex;
-    -webkit-flex-direction: row;
-    -ms-flex-direction: row;
-    flex-direction: row;
-        -webkit-justify-content: center;
-    -ms-flex-pack: center;
-    justify-content: center;
-    -webkit-align-content: stretch;
-    -ms-flex-line-pack: stretch;
-    align-content: stretch;
-    -webkit-align-items: center;
-    -ms-flex-align: center;
-    align-items: center;
+  background-color: $main-white;
 }
 
 .hidden {
   display: none;
 }
+
+.button {
+  border-radius: 6px;
+  overflow: hidden;
+  padding: 13px 45px;
+  display: inline-block;
+  position: relative;
+  border-left: 2px solid #bc1142;
+  border-right: 2px solid #dc3a64;
+  border-top: 2px solid #bc1142;
+  border-bottom: 2px solid #bc1142;
+  background-position: -200px 0,-200px 100%;
+  background-repeat: no-repeat;
+  background-size: 100% 22px; 
+  background-image: linear-gradient(to right, #bc1142 0%, #dc3a64 100%),linear-gradient(to right, #bc1142 0%, #dc3a64 100%);
+  -webkit-transition: all 0.4s ease-in-out;
+  -moz-transition: all 0.4s ease-in-out;
+  -o-transition: all 0.4s ease-in-out;
+  transition: all 0.4s ease-in-out;
+  font-size: 14px;
+
+  &.active {
+    opacity: 1;
+  
+    &:hover {
+      background-position: 0px 0px,0px 100%;
+      color: $main-white-text;
+    }
+  }
+
+  &.inactive {
+    opacity: 0.35;
+    pointer-events: none;
+    cursor: default;  
+  }
+}
+
+.flex {
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+}
+
+.flex-row {
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+}
+
+.flex-column {
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+}
+
+.flex-item-base {
+  -webkit-flex: 0 1 auto;
+  -ms-flex: 0 1 auto;
+  flex: 0 1 auto;
+  display: inline-block;
+}
+
+.flex-item-grow {
+  -webkit-flex: 1 1 auto;
+  -ms-flex: 1 1 auto;
+  flex: 1 1 auto;
+  display: inline-block;
+}
+
+.mod {
+  display: inline-block;
+  position: relative;
+  max-width: 1280px;
+}
+
+.portcupi-logo,
+.portcupi-typeface {
+  display: inline-block;
+  position: relative;
+  vertical-align: middle;
+}
+
+.portcupi-logo {
+  background: url("/images/portcupi-sprite-sheet.svg") no-repeat center center;
+  background-position: -1px 0;
+  width: 96px;
+  height: 69px;
+}
+
+.portcupi-typeface {
+  background: url("/images/portcupi-sprite-sheet.svg") no-repeat center center;
+  background-position: -107px -12px;
+  margin-left: 10px;
+  height: 45px;
+  width: 179px;
+}
+
+// Style Imports
+@import "nav";
+@import "footer";

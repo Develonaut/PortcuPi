@@ -1,11 +1,17 @@
 {{!-- {{log this}} --}}
 <div class="mod {{#if mod_name}}{{mod_name}}{{/if}}"   {{#if data_conf}}data-conf="{{data_conf}}"{{/if}}>
-  <ul>
-  {{#each data}}
-    <li data-game-id="{{this.id}}">
-        <span>{{this.GameTitle}}</span>
-        <span>{{this.Platform}}</span>
-    </li>
-  {{/each}}
-  </ul>
+  
+  {{#if data}}
+    <ul>
+    {{#each data}}
+      <li class="result-item" data-game-id="{{this.id}}">
+            <span>{{this.GameTitle}}</span>
+            <span>{{this.Platform}}</span>
+      </li>
+    {{/each}}
+    </ul>
+  {{else}}
+  <h1>Doesn't look like we found anything</h1>
+  {{/if}}
 </div>
+
