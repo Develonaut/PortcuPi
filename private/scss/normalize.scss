@@ -16,8 +16,13 @@ html {
  * Remove default margin.
  */
 
-body {
+body,
+ul {
   margin: 0;
+}
+
+ul {
+  padding: 0;
 }
 
 /* apply a natural box layout model to all elements, but allowing components to change */
@@ -99,6 +104,7 @@ template {
 
 a {
   background-color: transparent;
+  text-decoration: none;
 }
 
 /**
