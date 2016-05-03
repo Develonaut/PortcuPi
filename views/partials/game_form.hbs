@@ -1,6 +1,9 @@
 <section class="mod {{#if mod_name}}{{mod_name}}{{/if}}"   {{#if data_conf}}data-conf="{{data_conf}}"{{/if}}>
   <div class="search-box">
-    <div class="form-title"><h2>SEARCH FOR A GAME</h2></div>
+    <div class="form-title">
+      <h2>Finally, get the Metadata you need,</h2>
+      <h4>to build a proper Raspberry Pi game collection.</h4>
+    </div>
     <form data-role="game_search_form" method="POST" action="/results">
       <label class="form-label game-name hidden" for="game_name">Game Name</label>
       <input id="game_name" name="game_name" class="game_name_input" type="text" maxlength="60" placeholder="Game Name"/>

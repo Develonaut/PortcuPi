@@ -3,7 +3,6 @@ $max-page-width: 1060px;
 // utility imports i.e colors/fonts
 @import "colors";
 @import "normalize";
-@import "icons";
 
 // Style Imports
 @import "nav";
@@ -26,16 +25,22 @@ body {
   background-color: $main-white;
 }
 
-.hidden {
-  display: none;
+a,
+.link {
+  -webkit-transition: color 100ms ease;
+  -moz-transition: color 100ms ease;
+  -o-transition: color 100ms ease;
+  transition: color 100ms ease;
 }
 
-input {
-  &.disabled {
-    opacity: 0.35;
-    pointer-events: none;
-    cursor: default;  
-  }
+.icn-before::before,
+.icn-after::after,
+.icn {
+  content: "";
+  display: inline-block;
+  vertical-align: middle;
+  background: url("/images/portcupi-sprite-sheet.svg") no-repeat center center;
+  background-color: transparent;
 }
 
 .button {
@@ -64,12 +69,16 @@ input {
     background-position: 0px 0px,0px 100%;
     color: $main-white-text;
   }
+}
 
-  &.disabled {
-    opacity: 0.35;
-    pointer-events: none;
-    cursor: default;  
-  }
+.hidden {
+  display: none;
+}
+
+.disabled {
+  opacity: 0.35;
+  pointer-events: none;
+  cursor: default;  
 }
 
 .flex {
@@ -94,20 +103,20 @@ input {
   -webkit-flex: 0 1 auto;
   -ms-flex: 0 1 auto;
   flex: 0 1 auto;
-  display: inline-block;
 }
 
 .flex-item-grow {
   -webkit-flex: 1 1 auto;
   -ms-flex: 1 1 auto;
   flex: 1 1 auto;
-  display: inline-block;
 }
 
 .mod {
   display: inline-block;
   position: relative;
   width: 100%;
+  min-height: 580px;
+  margin-top: $nav-height;
 }
 
 .max-width-1280 {

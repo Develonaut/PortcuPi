@@ -17,7 +17,7 @@ footer {
     .learn-more,
     .raspberry-pi {
       width: 100%;
-      max-width: 150px;
+      min-width: 150px;
       margin-right: 32px;
       
       .donate-link {
@@ -25,8 +25,12 @@ footer {
           background: transparent;
           padding: 0;
           margin: 0;
-          font-size: 12px;
-          color: $main-white-text;
+          font-size: 11px;
+          color: $tertiary-grey-text;
+        
+          &:hover {
+            color: $main-white-text;
+          }
         }
       }
     }
@@ -35,33 +39,54 @@ footer {
       width: 100%;
       max-width: 336px;
 
+      .share-text {
+        &:before {
+          background-position: -10px -105px;
+          width: 24px;
+          height: 18px;
+          margin-right: 11px;
+        }
+      }
+
       li {
         display: inline-block;
         position: relative;
         width: 100%;
 
         &:first-of-type {
-          padding-left: 30px;
           text-transform: inherit;
         }
 
         &.email-input {
           form {
             width: 100%;
-            input:first-of-type {
-              width: 100%;
-              padding: 12px;
-              background: #FFFFFF;
-              border: 1px solid #C4C4C4;
-              box-shadow: inset 0px 1px 3px 0px rgba(0,0,0,0.17);
-              border-radius: 2px;
-              height: 40px;
+
+            input {
+              
+              &:first-of-type {
+                width: 100%;
+                padding: 12px;
+                background: #FFFFFF;
+                border: 1px solid #C4C4C4;
+                box-shadow: inset 0px 1px 3px 0px rgba(0,0,0,0.17);
+                border-radius: 2px;
+                height: 40px;
+              }
             }
+
             .email-submit {
               display: inline-block;
               position: absolute;
               top: 9px;
               right: 12px;
+              background-color: transparent;
+              padding: 0;
+              
+              &:before {
+                width: 33px;
+                height: 21px;
+                background-position: -75px -78px;
+              }
             }
           }
         }
@@ -85,24 +110,47 @@ footer {
 
         a {
           text-decoration: none;
-          color: $secondary-gray-text;
+          font-size: 11px;
+          color: $tertiary-grey-text;
+        
+          &:hover {
+            color: $main-white-text;
+          }
         }
-
       }
     }
   }
 
   .footer-secondary {
     background: $main-white;
+    height: 79px;
   
     .attribute-footer-wrapper {
       max-width: $max-page-width;
       margin: 0 auto;
 
-      li:nth-child(2) {
-        text-align: right;
+      .icn-before {
+        &:before {
+          width: 112px;
+          height: 27px;
+          background-position: -153px -76px;
+          display: inline-block;
+          position: relative;
+          margin-right: 8px;
+        }
+      }
+
+      li {
+        font-size: 12px;
+        list-style: none;
+        -webkit-align-self: center;
+        -ms-flex-item-align: center;
+        align-self: center;
+
+        &:nth-child(2) {
+          text-align: right;
+        }
       }
     }
-
   }
 }
