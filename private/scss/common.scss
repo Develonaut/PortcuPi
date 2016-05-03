@@ -119,6 +119,18 @@ a,
   margin-top: $nav-height;
 }
 
+.mod-background {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  margin: 0 auto;
+  top: 0;
+  left: 0;
+  opacity: 0.25;
+  background: url("/images/linecon-background.svg") no-repeat center 70px;
+  z-index: -1;
+}
+
 .max-width-1280 {
   max-width: 1280px;
 }
