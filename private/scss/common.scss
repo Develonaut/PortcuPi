@@ -31,7 +31,7 @@ body {
 }
 
 input {
-  &.inactive {
+  &.disabled {
     opacity: 0.35;
     pointer-events: none;
     cursor: default;  
@@ -57,17 +57,15 @@ input {
   -o-transition: all 0.4s ease-in-out;
   transition: all 0.4s ease-in-out;
   font-size: 14px;
+  opacity: 1;
+  color: $main-red;
 
-  &.active {
-    opacity: 1;
-  
-    &:hover {
-      background-position: 0px 0px,0px 100%;
-      color: $main-white-text;
-    }
+  &:hover {
+    background-position: 0px 0px,0px 100%;
+    color: $main-white-text;
   }
 
-  &.inactive {
+  &.disabled {
     opacity: 0.35;
     pointer-events: none;
     cursor: default;  
@@ -109,6 +107,10 @@ input {
 .mod {
   display: inline-block;
   position: relative;
+  width: 100%;
+}
+
+.max-width-1280 {
   max-width: 1280px;
 }
 

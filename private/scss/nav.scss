@@ -10,7 +10,7 @@ $nav-height: 140px;
   right: 0;
   left: 0;
   overflow: hidden;
-  position: fixed;
+  position: relative;
   height: $nav-height;
   z-index: 99;
   padding: 0 15px;
@@ -45,7 +45,6 @@ $nav-height: 140px;
     
       .button {
         text-decoration: none;
-        color: $main-red;
       }
 
     }

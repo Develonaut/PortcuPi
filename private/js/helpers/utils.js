@@ -28,6 +28,7 @@ module.exports = {
 
     return mod_conf;
   },
+  
   isEmptyObject: function(obj) {
     return !Object.keys(obj).length;
   }
