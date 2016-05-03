@@ -5,12 +5,20 @@ var router = express.Router();
 var helper_path = "../private/js/helpers/";
 
 var utils = require(helper_path + 'utils.js');
-var game_list_helper = require(helper_path + 'game_list_helper.js');
+var game_list_helper = require(helper_path + 'games_db_helpers.js');
 
 var result = {
       msg: null,
       markup: null
     };
+
+var js_files = [
+  '/js/result_list-min.js'
+];
+
+var css_files = [
+  '/css/result_list-min.css'
+];
 
 router.get('/', function(req, res, next) {
   res.redirect('/');
@@ -28,10 +36,10 @@ router.post('/', function(req, res, next) {
 });
 
 function sendGameName(game_name, res) {
-    game_list_helper.getGameList(game_name, function(data) {
-      modConf = utils.buildModConf("result-list", null, ['/js/result_list-min.js'], ['/css/result_list-min.css'], data);
-      res.render('partials/result_list', modConf);
-    });
-  };
+  game_list_helper.getGameList(game_name, function(data) {
+    modConf = utils.buildModConf("result-list", null, js_files, css_files, data);
+    res.render('partials/result_list', modConf);
+  });
+};
 
 module.exports = router;

@@ -1,1 +1,0 @@
-var request=require("request"),parseString=require("xml2js").parseString;module.exports={getGameList:function(e,t){request("http://thegamesdb.net/api/GetGamesList.php?name="+e,function(e,r,a){var s=null;e||200!=r.statusCode?t("error"):(parseString(a,function(e,t){s=t.Data.Game}),t(s))})}};

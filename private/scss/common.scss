@@ -72,13 +72,13 @@ a,
 }
 
 .hidden {
-  display: none;
+  display: none !important;
 }
 
 .disabled {
-  opacity: 0.35;
-  pointer-events: none;
-  cursor: default;  
+  opacity: 0.35 !important;
+  pointer-events: none !important;
+  cursor: default !important;  
 }
 
 .flex {

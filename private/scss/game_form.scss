@@ -68,6 +68,8 @@
         
         .game-name-wrapper {
           width: 100%;
+          padding-bottom: 15px;
+          border-bottom: 1px solid rgba(195,195,195,0.44);
 
           &:before {
             background-position: -116px -79px;
@@ -79,10 +81,34 @@
           .game-name-input {
             border-left: 1px solid rgba(195,195,195,0.44);
             padding: 0 10px;
-          }
+            
+            &::-webkit-input-placeholder {
+              color: $tertiary-grey-text;
+              font-size: 13px;
+            }
 
+            &::-moz-placeholder {
+              color: $tertiary-grey-text;
+              font-size: 13px;
+              vertical-align: middle;
+            }
+
+          }
         }
 
+        .platform-menu-trigger {
+          padding: 15px 0 5px 0;
+          background: #FFFFFF;
+          font-size: 13px;
+          width: 100%;
+          text-align: left;
+          color: $tertiary-grey-text;
+          
+          // &:before {
+
+          // }
+
+        }
 
         input {
           width: 100%;
