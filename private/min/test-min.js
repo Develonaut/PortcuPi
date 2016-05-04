@@ -1,1 +1,0 @@
-module.exports={sayHi:function(){console.log("yo")},someOtherFunction:function(){}};

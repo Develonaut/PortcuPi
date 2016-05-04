@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 
 // load helpers path
-var helper_path = "../private/js/helpers/min/";
+var helper_path = "../../private/js/helpers/min/";
 // load helpers
 var game_list_helper = require(helper_path + 'games_db_helpers-min.js');
 var utils = require(helper_path + 'utils-min.js');

@@ -19,8 +19,8 @@ app.use(cookieParser());
 
 // Route Set UP
 // Define route files
-var index = require('./routes/index'),
-    results = require('./routes/results');
+var index = require('./routes/min/index-min'),
+    results = require('./routes/min/results-min');
 
 // Then set them to the url path
 app.use('/', index);
