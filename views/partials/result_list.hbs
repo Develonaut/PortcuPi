@@ -1,17 +1,26 @@
-{{!-- {{log this}} --}}
-<div class="mod {{#if mod_name}}{{mod_name}}{{/if}}"   {{#if data_conf}}data-conf="{{data_conf}}"{{/if}}>
-  
-  {{#if data}}
-    <ul>
-    {{#each data}}
-      <li class="result-item" data-game-id="{{this.id}}">
-            <span>{{this.GameTitle}}</span>
-            <span>{{this.Platform}}</span>
-      </li>
-    {{/each}}
-    </ul>
-  {{else}}
-  <h1>Doesn't look like we found anything</h1>
-  {{/if}}
-</div>
+<section  class="mod {{#if mod_name}}{{mod_name}}{{/if}}" 
+          {{#if mod_name}}data-role="mod-{{mod_name}}{{/if}}"   
+          {{#if data_conf}}data-conf="{{data_conf}}"{{/if}}>
+  <div class="results-box">
+    <div class="results-title">
+      <h2><em>Here's</em> what we came up with.</h2>
+      <h4>Don't like what you see? Wanna <a>try again>?</a></h4>
+    </div>
+    <div class="results-wrapper">
+      {{#if data}}
+        <ul>
+        {{#each data}}
+          <li class="result-item" data-game-id="{{this.id}}">
+                <span>{{this.GameTitle}}</span>
+                <span>{{this.Platform}}</span>
+          </li>
+        {{/each}}
+        </ul>
+      {{else}}
+      <h1>Doesn't look like we found anything</h1>
+      {{/if}}
+    </div>
+  </div>
+  <section class="mod-background"></section>
+</section>
 

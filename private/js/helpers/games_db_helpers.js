@@ -9,7 +9,6 @@ module.exports = {
           parseString(body, function (err, result) {
             game_list = result.Data.Game;
           });
-          console.log(game_list);
           callback(game_list);
         } else {
           callback('getGameList error');
@@ -22,15 +21,12 @@ module.exports = {
           game_platform_url = '&platform=' + game_platform,
           url = base_url + game_name_url + game_platform_url;
 
-      console.log(url);
-
       request(url, function (error, response, body) {
         var game_list = null;
         if (!error && response.statusCode == 200) {
           parseString(body, function (err, result) {
             game_list = result.Data.Game;
           });
-          console.log(game_list);
           callback(game_list);
         } else {
           callback('getGameList error');
