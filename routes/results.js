@@ -1,11 +1,11 @@
 var express = require('express');
 var router = express.Router();
 
-// This is how we bring in external js to use there methods
-var helper_path = "../private/js/helpers/";
-
-var utils = require(helper_path + 'utils.js');
-var game_list_helper = require(helper_path + 'games_db_helpers.js');
+// load helpers path
+var helper_path = "../private/js/helpers/min/";
+// load helpers
+var game_list_helper = require(helper_path + 'games_db_helpers-min.js');
+var utils = require(helper_path + 'utils-min.js');
 
 var result = {
       msg: null,
@@ -21,7 +21,7 @@ var css_files = [
 ];
 
 // If you try to access the url by bypassing the search let
-// redirect yo
+// redirect you
 router.get('/', function(req, res, next) {
   res.redirect('/');
 });
@@ -41,17 +41,22 @@ router.post('/', function(req, res, next) {
 });
 
 router.get('/:game_name', function(req, res, next) {
-  console.log(req.params);
   getGameList(req.params.game_name, res);
 });
 
 router.get('/:game_platform/:game_name', function(req, res, next) {
-  console.log(req.params);
-  getGameList(req.params.game_name, res);
+  getPlatformSpecifiedGameList(req.params.game_platform, req.params.game_name, res);
 });
 
 function getGameList(game_name, res) {
   game_list_helper.getGameList(game_name, function(data) {
+    modConf = utils.buildModConf("result-list", null, js_files, css_files, data);
+    res.render('partials/result_list', modConf);
+  });
+};
+
+function getPlatformSpecifiedGameList(game_platform, game_name, res) {
+  game_list_helper.getPlatformSpecifiedGameList(game_platform, game_name, function(data) {
     modConf = utils.buildModConf("result-list", null, js_files, css_files, data);
     res.render('partials/result_list', modConf);
   });

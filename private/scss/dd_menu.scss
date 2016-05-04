@@ -1,0 +1,92 @@
+
+.dd-menu {
+  max-height: 250px;
+  overflow: auto;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  width: 100%;
+  border: 1px solid rgba(255,255,255,0.44);
+
+  &::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: $main-red;
+    border-radius: 19px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: $tertiary-grey;
+  }
+
+  ul {
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -webkit-flex: 1 0 auto;
+    -ms-flex: 1 0 auto;
+    flex: 1 0 auto;
+    height: 100%;
+
+    li {
+      display: -ms-flexbox;
+      display: -webkit-flex;
+      display: flex;
+      -webkit-flex: 1 0 auto;
+      -ms-flex: 1 0 auto;
+      flex: 1 0 auto;
+      width: 100%;
+      list-style: none;
+      cursor: pointer;
+      text-align: left;
+      padding: 15px;
+      -webkit-align-items: center;
+      -ms-flex-align: center;
+      align-items: center;
+      border-bottom: 1px solid rgba(195,195,195,0.44);
+
+      &:hover {
+        background: $button-gradient;
+        
+        &:before {
+          background-position: -261px -111px;
+          width: 32px;
+          height: 24px;
+        }
+
+        div {
+          color: $main-white-text;
+          border-left: 1px solid rgba(255,255,255,0.44);
+        }
+      }
+
+      &:before {
+        background-position: -219px -111px;
+        width: 32px;
+        height: 24px;
+        margin-right: 10px;
+      }
+  
+      div {
+        border-left: 1px solid rgba(195,195,195,0.44);
+        padding: 3px 11px;
+        display: inline-block;
+        position: relative;
+        -webkit-flex: 1 0 auto;
+        -ms-flex: 1 0 auto;
+        flex: 1 0 auto;
+        -webkit-align-self: stretch;
+        -ms-flex-item-align: stretch;
+        align-self: stretch;
+        font-size: 13px;
+        color: $tertiary-grey-text;
+        letter-spacing: 0.36px;
+      }
+    }
+  }
+}

@@ -1,4 +1,5 @@
 @import "common";
+@import "dd_menu.scss";
 
 .game-form {
   position: relative;
@@ -46,7 +47,6 @@
         em {
           font-weight: 500;
         }    
-  
       }
 
       h4 {
@@ -81,7 +81,8 @@
           .game-name-input {
             border-left: 1px solid rgba(195,195,195,0.44);
             padding: 0 10px;
-            
+            font-size: 13px;
+      
             &::-webkit-input-placeholder {
               color: $tertiary-grey-text;
               font-size: 13px;
@@ -93,6 +94,15 @@
               vertical-align: middle;
             }
 
+            &.error {
+              &::-webkit-input-placeholder {
+                color: $main-red;
+              }
+
+              &::-moz-placeholder {
+                color: $main-red;
+              }
+            }
           }
         }
 
@@ -104,10 +114,26 @@
           text-align: left;
           color: $tertiary-grey-text;
           
-          // &:before {
+          &.selected {
+            color: $main-black-text;
+          }
 
-          // }
+          &.active {
+            padding-bottom: 15px; 
+          }
 
+          &:after {
+            background-position: -1px -78px;
+            width: 29px;
+            height: 12px;
+            float: right;
+          }
+
+          &.active:after {
+            background-position: -40px -78px;
+            width: 29px;
+            height: 12px;
+          }
         }
 
         input {

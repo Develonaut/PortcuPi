@@ -2,10 +2,11 @@ var express = require('express');
 var router = express.Router();
 var path = require('path');
 
-// This is how we bring in external js to use there methods
-var helper_path = "../private/js/helpers/";
-var utils = require(helper_path + 'utils.js');
-var game_list_helper = require(helper_path + 'games_db_helpers.js');
+// load helpers path
+var helper_path = "../private/js/helpers/min/";
+// load helpers
+var game_list_helper = require(helper_path + 'games_db_helpers-min.js');
+var utils = require(helper_path + 'utils-min.js');
 
 var result = {
   msg: null,
@@ -29,13 +30,11 @@ router.get('/', function(req, res, next) {
 // use that to create a dropdown.
 function loadHomepage(res) {
   game_list_helper.getPlatformList(function(data) {
-    console.log(data);
     // lets build the conf settings for the module
     modConf = utils.buildModConf("game-form", null, js_files, css_files, data);
     // then let's pass the build modConf data to our partial view
     res.render('partials/game_form', modConf);
   });
 };
-
 
 module.exports = router;

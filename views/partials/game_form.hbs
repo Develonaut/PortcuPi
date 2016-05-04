@@ -1,4 +1,4 @@
-<section class="mod {{#if mod_name}}{{mod_name}}{{/if}}"   {{#if data_conf}}data-conf="{{data_conf}}"{{/if}}>
+<section class="mod {{#if mod_name}}{{mod_name}}{{/if}}" data-role="mod-{{#if mod_name}}{{mod_name}}{{/if}}"   {{#if data_conf}}data-conf="{{data_conf}}"{{/if}}>
   <div class="search-box">
     <div class="form-title">
       <h2>Finally, <em>get</em> the Metadata you need,</h2>
@@ -8,19 +8,19 @@
       <div class="form-wrapper">
         <div class="game-name-wrapper flex icn-before">
           <label class="form-label game-name hidden" for="game_name">Game Name</label>
-          <input id="game_name" name="game_name" class="game-name-input flex-item-grow" type="text" maxlength="60" placeholder="Game Name"/>
+          <input id="game_name" name="game_name" class="game-name-input flex-item-grow" type="text" maxlength="60" data-required="true" placeholder="Game Name"/>
         </div>
         <div class="game-platform-wrapper flex icn-before hidden">
           <label class="form-label game-name hidden" for="game_platform">Game Name</label>
           <input id="game_platform" name="game_platform" class="game-name-input flex-item-grow" type="text" maxlength="60" placeholder="Game Platform"/>
         </div>
           {{#if data}}
-          <button class="platform-menu-trigger icn-after" data-role="dropdown_trigger">Platform</button>
-          <div class="platform-menu-container dropdown flex icn-after hidden">
+          <button class="platform-menu-trigger dd-trigger icn-after" data-role="dd_trigger">Platform</button>
+          <div class="platform-menu-container dd-menu flex icn-after hidden" data-role="dd_menu">
             <ul>
             {{#each data}}
-              <li class="result-item" data-game-id="{{this.id}}">
-                <span>{{this.name}}</span>
+              <li class="result-item icn-before" data-role="dd_item" data-platform-alias="{{this.alias}}">
+                <div>{{this.name}}</div>
               </li>
             {{/each}}
             </ul>
