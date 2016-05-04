@@ -20,22 +20,37 @@ var css_files = [
   '/css/result_list-min.css'
 ];
 
+// If you try to access the url by bypassing the search let
+// redirect yo
 router.get('/', function(req, res, next) {
   res.redirect('/');
 });
 
-router.get('/:game_name', function(req, res, next) {
-  sendGameName(req.params.game_name, res);
-});
-
 // make a post request to the router
-// then redirect to use the game name variable
-// to keep url clean
+// then redirect to use the arguments to build 
+// a clean url
 router.post('/', function(req, res, next) {
-  res.redirect('/results/' + req.body.game_name);
+  var url = '/results/' + req.body.game_name;
+
+  if (req.body.game_platform) {
+   var game_platform_url = req.body.game_platform + '/';
+   url = '/results/' + game_platform_url + req.body.game_name;
+  }
+
+  res.redirect(url);
 });
 
-function sendGameName(game_name, res) {
+router.get('/:game_name', function(req, res, next) {
+  console.log(req.params);
+  getGameList(req.params.game_name, res);
+});
+
+router.get('/:game_platform/:game_name', function(req, res, next) {
+  console.log(req.params);
+  getGameList(req.params.game_name, res);
+});
+
+function getGameList(game_name, res) {
   game_list_helper.getGameList(game_name, function(data) {
     modConf = utils.buildModConf("result-list", null, js_files, css_files, data);
     res.render('partials/result_list', modConf);

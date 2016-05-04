@@ -3,6 +3,9 @@ footer {
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
+  position:absolute;
+  bottom: 0;
+  width: 100%;
 
   .footer-main {
     max-width: $max-page-width;

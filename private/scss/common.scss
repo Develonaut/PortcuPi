@@ -25,6 +25,11 @@ body {
   background-color: $main-white;
 }
 
+.site-wrapper {
+  min-height:100%;
+  position:relative;
+}
+
 a,
 .link {
   -webkit-transition: color 100ms ease;
@@ -115,8 +120,7 @@ a,
   display: inline-block;
   position: relative;
   width: 100%;
-  min-height: 580px;
-  margin-top: $nav-height;
+  padding-bottom: 620px;
 }
 
 .mod-background {
