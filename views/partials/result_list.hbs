@@ -4,15 +4,15 @@
   <div class="results-box">
     <div class="results-title">
       <h2><em>Here's</em> what we came up with.</h2>
-      <h4>Don't like what you see? Wanna <a>try again>?</a></h4>
+      <h4>Don't like what you see? Wanna <a class="try-again-link link" href="/">try again?</a></h4>
     </div>
     <div class="results-wrapper">
       {{#if data}}
         <ul>
         {{#each data}}
-          <li class="result-item" data-game-id="{{this.id}}">
-                <span>{{this.GameTitle}}</span>
-                <span>{{this.Platform}}</span>
+          <li class="result-item icn-before" data-game-id="{{this.id}}">
+              <div>{{this.GameTitle}}</div>
+              <div>{{this.Platform}}</div>
           </li>
         {{/each}}
         </ul>
