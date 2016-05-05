@@ -9,6 +9,7 @@ module.exports = {
           parseString(body, function (err, result) {
             game_list = result.Data.Game;
           });
+          console.log(game_list);
           callback(game_list);
         } else {
           callback('getGameList error');
@@ -43,6 +44,19 @@ module.exports = {
           callback(platform_list);
         } else {
           callback('getPlatformList Error');
+        }
+      })
+    },
+    getGame: function (game_id, callback) {
+      request('http://thegamesdb.net/api/GetGame.php?id=' + game_id, function (error, response, body) {
+        var game = null;
+        if (!error && response.statusCode == 200) {
+          parseString(body, function (err, result) {
+            game = result.Data.Game;
+          });
+          callback(game);
+        } else {
+          callback('getGame Error');
         }
       })
     }

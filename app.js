@@ -21,10 +21,12 @@ app.use(cookieParser());
 // Define route files
 var index = require('./routes/min/index-min'),
     results = require('./routes/min/results-min');
+    game = require('./routes/min/game-min');
 
 // Then set them to the url path
 app.use('/', index);
 app.use('/results', results);
+app.use('/game', game);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

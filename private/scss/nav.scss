@@ -33,14 +33,23 @@ $nav-height: 140px;
       width: 100%;
       height: 100%;
 
-    li {
+    a {
+      -webkit-flex: 0 1 auto;
+      -ms-flex: 0 1 auto;
+      flex: 0 1 auto;
+    }
+
+    li,
+    a {
       list-style: none;
       -webkit-align-self: center;
       -ms-flex-item-align: center;
       align-self: center;
     
       &.logo {
-        text-align: center;
+        -webkit-justify-content: center;
+        -ms-flex-pack: center;
+        justify-content: center;
       }
     
       .button {

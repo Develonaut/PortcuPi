@@ -1,19 +1,17 @@
 <section  class="mod {{#if mod_name}}{{mod_name}}{{/if}}" 
           {{#if mod_name}}data-role="mod-{{mod_name}}{{/if}}"   
           {{#if data_conf}}data-conf="{{data_conf}}"{{/if}}>
-  <div class="results-box">
-    <div class="results-title">
-      <h2><em>Here's</em> what we came up with.</h2>
-      <h4>Don't like what you see? Wanna <a class="try-again-link link" href="/">try again?</a></h4>
-    </div>
-    <div class="results-wrapper">
+  <div class="game">
       {{#if data}}
         <ul class="flex">
         {{#each data}}
+        <div>{{this.id}}</div>
+        <div>{{this.GameTitle}}</div>
           <li class="result-item flex flex-item-grow" data-game-id="{{this.id}}">
-              <a class="flex flex-item-grow icn-before" href="/game/{{this.GameTitle}}?id={{this.id}}">
+              <a class="flex flex-item-grow icn-before" href="/game/{{this.GameTitle}}/{{this.id}}">
               <div>{{this.GameTitle}}</div>
               <div>{{this.Platform}}</div>
+              <div>{{this.Images}}</div>
               </a>
           </li>
         {{/each}}
@@ -22,7 +20,6 @@
       <h1>Doesn't look like we found anything</h1>
       {{/if}}
     </div>
-  </div>
   <section class="mod-background"></section>
 </section>
 
