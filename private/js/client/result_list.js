@@ -1,3 +1,10 @@
-Handlebars.registerHelper("log", function(something) {
-  console.log(something);
-});
+var page = $(document);
+
+page.on("ready", showResults);
+
+function showResults () {
+  var results = $('.results-wrapper');
+
+  results.addClass('results-found');
+
+}

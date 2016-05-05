@@ -1,1 +1,1 @@
-Handlebars.registerHelper("log",function(e){console.log(e)});
+function showResults(){var s=$(".results-wrapper");s.addClass("results-found")}var page=$(document);page.on("ready",showResults);
