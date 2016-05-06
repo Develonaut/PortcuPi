@@ -22,7 +22,7 @@ function makeTextFile () {
   // Going to store the newly created file in local storage just in case they want
   // to download it again.
   textFile = window.URL.createObjectURL(data);
-  localStorage.setItem("metaFile", textFile);
+  localStorage.setItem("metaFile", text);
 
   return textFile;
 };
