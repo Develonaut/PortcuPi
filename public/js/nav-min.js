@@ -1,0 +1,1 @@
+function checkForMetaFile(){var e=$("[data-role=my_meta]");"undefined"!=typeof Storage||alert("Youre using an out of data browser update it to store xml files for future use!")}var metaFile=localStorage.getItem("metaFile"),page=$(document);page.on("ready",checkForMetaFile);

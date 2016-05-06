@@ -4,7 +4,7 @@ var page = $(document);
 page.on("click", "[data-role=dd_trigger]", showDDMenu);
 page.on("click", "[data-role=dd_item]", selectItem);
 page.on("click", "[data-role=search_button]", checkFields);
-page.on("keydown", "[data-role=game_search_form]", hijackEnterPress);
+page.on("keydown", hijackEnterPress);
 page.on("ready", clearInputs);
 
 // Going to clear out the inputs if the user hits this page, to
@@ -53,7 +53,9 @@ function selectItem (e) {
 // in the form.
 function hijackEnterPress (e) {
   if (e.which == 13) {
-    checkFields(e);    
+    e.preventDefault();
+    e.stopImmediatePropagation();
+    checkFields.call($("[data-role=search_button]"), e);    
   }
 }
 
@@ -61,6 +63,8 @@ function hijackEnterPress (e) {
 function checkFields (e) {
   var self = $(this),
       mod = self.parents("[data-role=mod-game-form]"),
+      submit_text = mod.find("[data-role=submit_text]"),
+      loader = mod.find("[data-role=loader]"),
       required_inputs = mod.find("[data-required]"),
       required_input_values = required_inputs.val();
 
@@ -70,6 +74,12 @@ function checkFields (e) {
     e.preventDefault();
     e.stopImmediatePropagation();
     return false;
-  }
+  } 
+    
+  submit_text.addClass("hidden");
+  loader.removeClass("hidden");
+  page.off("click", "[data-role=search_button]", checkFields);
+  self.click();
+
 }
 

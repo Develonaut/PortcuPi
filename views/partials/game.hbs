@@ -3,19 +3,20 @@
           {{#if data_conf}}data-conf="{{data_conf}}"{{/if}}>
   <div class="game">
       {{#if data}}
-        <ul class="flex">
         {{#each data}}
+        <div class="flex {{this.GameTitle}}">
         <div>{{this.id}}</div>
         <div>{{this.GameTitle}}</div>
-          <li class="result-item flex flex-item-grow" data-game-id="{{this.id}}">
+        <div class="result-item flex flex-item-grow" data-game-id="{{this.id}}">
               <a class="flex flex-item-grow icn-before" href="/game/{{this.GameTitle}}/{{this.id}}">
               <div>{{this.GameTitle}}</div>
               <div>{{this.Platform}}</div>
               <div>{{this.Images}}</div>
               </a>
-          </li>
+        </div>
+        </div>
+        <a data-role="download" data-game-name="{{this.GameTitle}}" download="game.txt" id="downloadlink">Download Game Info</a>
         {{/each}}
-        </ul>
       {{else}}
       <h1>Doesn't look like we found anything</h1>
       {{/if}}

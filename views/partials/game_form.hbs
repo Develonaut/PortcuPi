@@ -29,7 +29,15 @@
           </div>
           {{/if}}
       </div>
-      <button class="submit-button button" type="submit" data-role="search_button"/>Find That Game!</button>
+      <button class="submit-button button flex flex-item-grow" type="submit" data-role="search_button"/>
+        <span class="submit-text flex-item-grow" data-role="submit_text">Find That Game!</span>
+        <div class='uil-rolling-css flex-item-grow hidden' data-role="loader">
+          <div>
+              <div></div>
+              <div></div>
+          </div>
+        </div>
+      </button>
     </form>
     <div class="learn-more flex">
       <h4 class="flex-item-base">New to PortcuPi?</h4>

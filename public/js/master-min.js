@@ -1,0 +1,1 @@
+function checkMetaFile(){var e=$("[data-role=my_meta]");"undefined"!=typeof Storage&&(console.log("HTML5 Storage available"),metaFile?(console.log("metaFile exists:"+metaFile),e.removeClass("disabled")):console.log("No current metaFile"))}var metaFile=localStorage.getItem("metaFile"),page=$(document);page.on("ready",checkMetaFile);
