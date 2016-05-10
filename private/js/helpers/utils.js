@@ -4,7 +4,7 @@ module.exports = {
     // mod_name param = string 'main-mod'
     var mod_name = (typeof(mod_name) === "undefined" || typeof(mod_name) !== "string") ? null : mod_name;
     // data_conf param = object {user_id: '123456'}
-    var data_conf = (typeof(data_conf) === "undefined" || typeof(data_conf !== "object")) ? null : data_conf;
+    var data_conf = (typeof(data_conf) === "undefined" || typeof(data_conf) !== "object") ? null : data_conf;
     // js_files param = array of files path strings ['/js/file_name.js']
     var js_files = (typeof(js_files) === "undefined" || js_files.constructor !== Array) ? [] : js_files;
     // css_files param = array of files path strings ['/css/file_name.css']
