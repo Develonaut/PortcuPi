@@ -1,5 +1,6 @@
 var request = require('request');
 var parseString = require('xml2js').parseString;
+var _ = require('underscore');
 
 var db_helper_vars = {
   'base_image_url': 'http://thegamesdb.net/banners/'
@@ -81,7 +82,6 @@ module.exports = {
               game_object.BoxArt = box_art;
             }
           }
-
 
           // TODO: Work on the eror casses for getting a game:
           // use http://localhost:3000/game/Spyro%20Adventures?id=34869

@@ -20,7 +20,7 @@ app.use(cookieParser());
 // Route Set UP
 // Define route files
 var index = require('./routes/min/index-min'),
-    results = require('./routes/min/results-min');
+    results = require('./routes/min/results-min'),
     game = require('./routes/min/game-min');
 
 // Then set them to the url path
