@@ -4,16 +4,19 @@
   <div class="game">
       {{#if data}}
         {{#each data}}
-        <div class="flex {{this.GameTitle}}">
-        <div>{{this.id}}</div>
-        <div>{{this.GameTitle}}</div>
         <div class="result-item flex flex-item-grow" data-game-id="{{this.id}}">
-              <a class="flex flex-item-grow icn-before" href="/game/{{this.GameTitle}}/{{this.id}}">
+            <div class="box-art">
+              
+              {{#if this.Images}}
+                {{#each this.BoxArt}}
+                    <img class="{{this.side}}-box-art" src="http://thegamesdb.net/banners/{{this.thumb}}"></img>
+                {{/each}}
+              {{/if}}
+            </div>
+            <a class="flex flex-item-grow icn-before" href="/game/{{this.GameTitle}}?id={{this.id}}">
               <div>{{this.GameTitle}}</div>
               <div>{{this.Platform}}</div>
-              <div>{{this.Images}}</div>
-              </a>
-        </div>
+            </a>
         </div>
         <a data-role="download" data-game-name="{{this.GameTitle}}" download="game.txt" id="downloadlink">Download Game Info</a>
         {{/each}}

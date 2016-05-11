@@ -10,7 +10,7 @@ page.on("ready", clearInputs);
 // Going to clear out the inputs if the user hits this page, to
 // allow for fresh searches everytime.
 function clearInputs () {
-  var mod = $("[data-role=mod-game-form]"),
+  var mod = $("[data-role=mod]"),
       game_name_input = mod.find("#game_name"),
       game_platform_selection = mod.find("#game_platform");
 
@@ -21,11 +21,12 @@ function clearInputs () {
 // Dropdown menu trigger that shows the drop down menu,
 // and adds an active state to the dropdown button.
 function showDDMenu (e) {
+  console.log('hit');
   e.preventDefault();
   e.stopImmediatePropagation();
 
   var self = $(this),
-      mod = self.parents("[data-role=mod-game-form]"),
+      mod = self.parents("[data-role=mod]"),
       dd_list = mod.find("[data-role=dd_menu]");
 
   self.toggleClass("active");
@@ -37,7 +38,7 @@ function showDDMenu (e) {
 function selectItem (e) {
   var self = $(this),
       self_text = $.trim(self.text()),
-      mod = self.parents("[data-role=mod-game-form]"),
+      mod = self.parents("[data-role=mod]"),
       dd_trigger = mod.find("[data-role=dd_trigger]"),
       dd_list = mod.find("[data-role=dd_menu]"),
       game_platform_selection = mod.find("#game_platform");
@@ -62,7 +63,7 @@ function hijackEnterPress (e) {
 // Checks to make sure the required input fields are filled.
 function checkFields (e) {
   var self = $(this),
-      mod = self.parents("[data-role=mod-game-form]"),
+      mod = self.parents("[data-role=mod]"),
       submit_text = mod.find("[data-role=submit_text]"),
       loader = mod.find("[data-role=loader]"),
       required_inputs = mod.find("[data-required]"),
