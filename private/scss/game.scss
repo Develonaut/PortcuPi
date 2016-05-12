@@ -1,0 +1,34 @@
+@import "common";
+
+.game {
+  position: relative;
+  width: 100%;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+
+  .result-item {
+    width: 100%;
+    max-width: 900px;
+    top: 115px;
+    position: relative;
+    -webkit-flex: 1 0 auto;
+    -ms-flex: 1 0 auto;
+    flex: 1 0 auto;
+  
+    .box-art {
+      position: relative;
+
+      .active {
+        position: relative;
+        z-index: 2;
+      }
+
+      img {
+      position: absolute;
+      left: 0;
+      top: 0;
+      }
+    }
+  }
+}

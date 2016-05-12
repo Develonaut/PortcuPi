@@ -13,11 +13,11 @@ var result = {
     };
 
 var js_files = [
-  '/js/game-min.js'
+  '/js/page/game-min.js'
 ];
 
 var css_files = [
-  '/css/result_list-min.css'
+  '/css/game-min.css'
 ];
 
 router.get('/:game_name/', function(req, res, next) {

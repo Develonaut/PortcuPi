@@ -1,7 +1,6 @@
 var page = $(document);
 
 // Game form event listeners.
-page.on("click", "[data-role=dd_trigger]", showDDMenu);
 page.on("click", "[data-role=dd_item]", selectItem);
 page.on("click", "[data-role=search_button]", checkFields);
 page.on("keydown", hijackEnterPress);
@@ -16,21 +15,6 @@ function clearInputs () {
 
   game_platform_selection.val('');
   game_name_input.val('');
-}
-
-// Dropdown menu trigger that shows the drop down menu,
-// and adds an active state to the dropdown button.
-function showDDMenu (e) {
-  console.log('hit');
-  e.preventDefault();
-  e.stopImmediatePropagation();
-
-  var self = $(this),
-      mod = self.parents("[data-role=mod]"),
-      dd_list = mod.find("[data-role=dd_menu]");
-
-  self.toggleClass("active");
-  dd_list.toggleClass("hidden");
 }
 
 // Takes the text form the selected item and update the platform

@@ -60,38 +60,40 @@ module.exports = {
           });
 
          // Get the image url's from the game data
-          var game_object = game[0],
-              box_art = {};
+          var game_object = game[0];
+          // console.log(game_object);
 
-          // TODO: Work on the eror casses for getting a game:
-          // use http://localhost:3000/game/Spyro%20Adventures?id=34869
-          // and notice the error it throws.
+          // Let's see if the game we got has boxart to display. If it does 
+          // let's get the data we want and store it in the game object.
+          var box_art = {},
+              game_has_images = _.has(game_object, 'Images');
+              game_has_boxart = _.has(game_object.Images[0], 'boxart');
 
-          if (game_object.Images[0] !== undefined) {
-            var game_object_images = game_object.Images[0];
+          if (game_has_images && game_has_boxart) {
+            var game_box_art = game_object.Images[0].boxart; 
 
-            if (game_object_images.boxart[0] !== undefined) {
-              box_art.front = game_object_images.boxart[0].$;
-              game_object.BoxArt = box_art;
+            if (!_.isEmpty(game_box_art[0])) {
+              box_art.front = game_box_art[0].$;
+
+              // game_object.BoxArtSize = [game_box_art[0].]
+              game_object.BoxArt = [box_art];
             }
 
-            if (game_object_images.boxart[1] !== undefined) {
-              box_art.front = game_object_images.boxart[1].$;
-              box_art.back = game_object_images.boxart[0].$;
-
-              game_object.BoxArt = box_art;
+            if (!_.isEmpty(game_box_art[1])) {
+              box_art.front = game_box_art[1].$;
+              box_art.back = game_box_art[0].$;
+              game_object.BoxArt = [box_art];
             }
           }
 
-          // TODO: Work on the eror casses for getting a game:
-          // use http://localhost:3000/game/Spyro%20Adventures?id=34869
-          // and notice the error it throws.
+          // // Let's look and see if the game has genres for us to use.
+          var genres = '',
+              game_has_genres = _.has(game_object, 'Genres');
 
-          // var genres = '';
-          // if (game_object.Genres[0] !== undefined) {
-          //   genres = game_object.Genres[0].genre[0];
-          // }
-          // game_object.Genres = [genres];
+          if (game_has_genres) {
+            genres = game_object.Genres[0].genre[0];
+            game_object.Genres = [genres];
+          }
 
           callback(game);
         } else {

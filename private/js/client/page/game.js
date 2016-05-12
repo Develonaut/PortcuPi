@@ -1,11 +1,17 @@
-var page = $(document);
+var page = document;
+page.addEventListener("DOMContentLoaded", initPage);
+
+function initPage (e) {
+  var mod = document.querySelector("[data-role=mod]"),
+      download_button = document.querySelector("[data-role=download]");
+
+  download_button.addEventListener("click", createDownloadLink);
+}
+
 // Let's store the user created text file in HTML5 local storage.
-
-page.on("click", '[data-role=download]', createDownloadLink);
-
 function makeTextFile () {
-  var self = $(this),
-      game_name = self.data("game-name");
+  var self = this,
+      game_name = self.getAttribute("data-game-name");
 
   var textFile = metaFile;
   var text = game_name;

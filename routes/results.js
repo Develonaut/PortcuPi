@@ -13,7 +13,7 @@ var result = {
     };
 
 var js_files = [
-  '/js/result_list-min.js'
+  '/js/page/result_list-min.js'
 ];
 
 var css_files = [

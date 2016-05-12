@@ -14,7 +14,8 @@ var result = {
 };
 
 var js_files = [
-  '/js/game_form-min.js'
+  '/js/page/game_form-min.js',
+  '/js/ui/dropdown-min.js',
 ];
 
 var css_files = [
