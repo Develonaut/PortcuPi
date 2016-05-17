@@ -7,6 +7,8 @@
         <div class="result-item flex flex-row flex-item-grow" data-game-id="{{this.id}}">
             {{#if this.BoxArt}}
               <div class="box-art flex flex-row flex-item-base">
+                <div class="slide-button">prev</div>
+                <div class="slide-button">next</div>
                 {{#each this.BoxArt}}
                   {{#each this}}
                       <img class="{{this.side}}-box-art flex-item-base {{#if @first}}active{{/if}}" data-role="{{this.side}}-box-art" src="http://thegamesdb.net/banners/{{this.thumb}}"></img>
