@@ -6,32 +6,37 @@
         {{#each data}}
         <div class="result-item flex flex-row flex-item-grow" data-game-id="{{this.id}}">
             {{#if this.BoxArt}}
-              <div class="box-art flex flex-row flex-item-grow">
+              <div class="box-art flex flex-row flex-item-base">
                 {{#each this.BoxArt}}
                   {{#each this}}
-                      <img class="{{this.side}}-box-art {{#if @first}}active{{/if}}" data-role="{{this.side}}-box-art" src="http://thegamesdb.net/banners/{{this.thumb}}"></img>
+                      <img class="{{this.side}}-box-art flex-item-base {{#if @first}}active{{/if}}" data-role="{{this.side}}-box-art" src="http://thegamesdb.net/banners/{{this.thumb}}"></img>
                   {{/each}}
                 {{/each}}
               </div>
             {{/if}}
-            <div class="flex flex-column flex-item-grow">
-              <a href="/game/{{this.GameTitle}}?id={{this.id}}">{{this.GameTitle}}</a>
-              <div>{{this.Platform}}</div>
+            <ul class="flex flex-column flex-item-grow result-details">
+              <li>
+                <h1 class="game-title">
+                  <a href="/game/{{this.GameTitle}}?id={{this.id}}">{{this.GameTitle}}</a>
+                </h1>
+              </li>
+              <li>Platform: {{this.Platform}}</li>
               {{#if this.Developer}}
-                <div>Developer: {{this.Developer}}</div>
+                <li>Developer: {{this.Developer}}</li>
               {{/if}}
               {{#if this.Publisher}}
-                <div>Publisher: {{this.Publisher}}</div>
+                <li>Publisher: {{this.Publisher}}</li>
               {{/if}}
               {{#if this.Genres}}
-                <div>Genre: {{this.Genres}}</div>
+                <li>Genre: {{this.Genres}}</li>
               {{/if}}
               {{#if this.Overview}}
-                <div>{{this.Overview}}</div>
+                <li>{{this.Overview}}</li>
               {{/if}}
-            
-              <a data-role="download" data-game-name="{{this.GameTitle}}" download="game.txt" id="downloadlink">Download Game Info</a>
-            </div>
+              <li>
+                <a data-role="download" data-game-name="{{this.GameTitle}}" download="game.txt" class="button" id="downloadlink">Get Game Info</a>
+              </li>
+            </ul>
         </div>
         {{/each}}
       {{else}}

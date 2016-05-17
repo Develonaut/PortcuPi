@@ -3,6 +3,7 @@ var express = require('express'),
     favicon = require('serve-favicon'),
     logger = require('morgan'),
     cookieParser = require('cookie-parser'),
+    hbs = require('hbs'),
     bodyParser = require('body-parser'),
     fs = require('fs'),
     app = express();
@@ -16,6 +17,10 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
+
+// Defines where we can load in partials from for 
+// Handlebars
+hbs.registerPartials(__dirname + '/views/partials');
 
 // Route Set UP
 // Define route files

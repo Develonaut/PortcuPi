@@ -13,33 +13,22 @@ var result = {
   markup: null
 };
 
-var js_files = [
-  '/js/page/game_form-min.js',
-  '/js/ui/dropdown-min.js',
-];
+var js_files = [];
 
-var css_files = [
-  '/css/game_form-min.css'
-];
+var css_files = [];
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  loadHomepage(res);
+  loadPage(res);
 });
 
 // Need to use a helper to get a list of console platforms from the API, then
 // use that to create a dropdown.
-function loadHomepage(res) {
+function loadPage(res) {
   // lets build the conf settings for the module
-  modConf = utils.buildModConf("game-form", null, js_files, css_files, null);
+  modConf = utils.buildModConf("game-form", null, js_files, css_files, data);
   // then let's pass the build modConf data to our partial view
-  res.render('partials/game_form', modConf);
-
-  // TODO: We still want this functionality but in a typeahead situation
-  // client side and not on initial page load.
-  // game_list_helper.getPlatformList(function(data) {
-    // modConf = utils.buildModConf("game-form", null, js_files, css_files, data);
-  // });
+  res.render('partials/no_results', modConf);
 };
 
 module.exports = router;

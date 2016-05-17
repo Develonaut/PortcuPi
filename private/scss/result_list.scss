@@ -82,7 +82,7 @@
 
       &.results-found {
         max-height: 250px;
-        overflow: auto;
+        overflow-y: auto;
         display: inline-block;
         opacity: 1;
       }

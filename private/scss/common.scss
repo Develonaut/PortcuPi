@@ -1,4 +1,6 @@
 $max-page-width: 1060px;
+$tablet-width: 768px;
+$mobile-width: 340px;
 
 // utility imports i.e colors/fonts
 @import "colors";
@@ -70,6 +72,7 @@ a,
   font-size: 14px;
   opacity: 1;
   color: $main-red;
+  cursor: pointer;
 
   &:hover {
     background-position: 0px 0px,0px 100%;
@@ -121,7 +124,18 @@ a,
   display: inline-block;
   position: relative;
   width: 100%;
+  padding-left: 30px;
+  padding-right: 30px;
   padding-bottom: 620px;
+
+    @media screen and (max-width: 1026px) {
+      padding-bottom: 692px;
+    }
+
+    @media screen and (max-width: 610px) {
+      padding-bottom: 1012px;
+    }
+
 }
 
 .mod-background {
