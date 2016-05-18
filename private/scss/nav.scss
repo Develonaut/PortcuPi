@@ -75,6 +75,12 @@ $nav-height: 140px;
       -webkit-flex: 0 1 auto;
       -ms-flex: 0 1 auto;
       flex: 0 1 auto;
+
+        @media screen and (max-width: 390px) {
+          padding-left: 30px;
+          padding-right: 30px;
+        }
+
     }
 
     li,
@@ -89,6 +95,11 @@ $nav-height: 140px;
         -ms-flex-pack: center;
         justify-content: center;
         white-space: nowrap;
+
+        @media screen and (max-width: 390px) {
+          transform: scale(0.9, 0.9);
+        }
+
       }
     
       .button {
