@@ -28,7 +28,19 @@
   </head>
 <body>
   <div class="site-wrapper">
-    <nav class="nav flex">
+    <nav class="nav flex" data-role="nav">
+      <ul class="flex flex-item">
+        <li class="flex-item-base"><a class="button" href="/">Search</a></li>
+        <li class="logo flex flex-item-grow">
+          <a href="/" class="flex-item-grow">
+            <div class="portcupi-logo"></div>
+            <div class="portcupi-typeface"></div>
+          </a>
+        </li>
+        <li class="flex-item-base"><a class="button disabled" data-role="my_meta" href="/mymeta">MyMeta</a></li>
+      </ul>
+    </nav>
+    <nav class="nav sticky-nav flex" data-role="sticky_nav">
       <ul class="flex flex-item">
         <li class="flex-item-base"><a class="button" href="/">Search</a></li>
         <li class="logo flex flex-item-grow">

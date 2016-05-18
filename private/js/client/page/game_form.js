@@ -51,10 +51,12 @@ function checkFields (e) {
       submit_text = mod.find("[data-role=submit_text]"),
       loader = mod.find("[data-role=loader]"),
       required_inputs = mod.find("[data-required]"),
+      game_name_input = mod[0].querySelector("#game_name"),
       required_input_values = required_inputs.val();
 
   if (required_input_values == "") {
     required_inputs.addClass("error");
+    game_name_input.placeholder = "Please Enter A Game Name";
 
     e.preventDefault();
     e.stopImmediatePropagation();
