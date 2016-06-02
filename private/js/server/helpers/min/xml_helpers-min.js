@@ -1,0 +1,1 @@
+var request=require("request"),parseString=require("xml2js").parseString,_=require("underscore"),fs=require("fs"),xml2js=require("xml2js");module.exports={buildXML:function(e){var e=e[0],r=new xml2js.Builder,s=r.buildObject(e,{renderOpts:{pretty:!1}});return console.log(s),s}};

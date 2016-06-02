@@ -1,9 +1,14 @@
 var request = require('request');
 var parseString = require('xml2js').parseString;
 var _ = require('underscore');
+var fs = require("fs");
+
+var helper_path = "../min/";
+var xml_helper = require(helper_path + 'xml_helpers-min.js');
 
 var db_helper_vars = {
-  'base_image_url': 'http://thegamesdb.net/banners/'
+  temp_path_url: 'public/images/temp/',
+  base_image_url: 'http://thegamesdb.net/banners/'
 };
 
 module.exports = {
@@ -55,8 +60,11 @@ module.exports = {
       request('http://thegamesdb.net/api/GetGame.php?id=' + game_id, function (error, response, body) {
         var game = null;
         if (!error && response.statusCode == 200) {
+          
+          // console.log(body);
           parseString(body, function (err, result) {
             game = result.Data.Game;
+            game.XML = xml_helper.buildXML(result.Data.Game);
           });
 
          // Get the image url's from the game data
@@ -94,6 +102,8 @@ module.exports = {
             genres = game_object.Genres[0].genre[0];
             game_object.Genres = [genres];
           }
+
+          // console.log(game);
 
           callback(game);
         } else {
