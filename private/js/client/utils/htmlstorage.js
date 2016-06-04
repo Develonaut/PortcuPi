@@ -5,4 +5,3 @@
 // metaFile is for the overall file that a user can contiually 
 // redownload after updating or losing their original created file.
 var metaFile = localStorage.getItem("metaFile");
-var gameImage = localStorage.getItem("gameImage");

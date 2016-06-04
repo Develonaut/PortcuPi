@@ -10,11 +10,20 @@
       <div class="form-wrapper">
         <div class="game-name-wrapper flex icn-before">
           <label class="form-label game-name hidden" for="game_name">Game Name</label>
-          <input id="game_name" name="game_name" class="game-name-input flex-item-grow" type="text" maxlength="60" data-required="true" placeholder="Game Name"/>
+          <input id="game_name" name="game_name" autocomplete="off" class="game-name-input flex-item-grow" type="text" maxlength="60" data-required="true" placeholder="Game Name"/>
         </div>
-        <div class="game-platform-wrapper flex icn-before">
+        <div class="game-platform-wrapper flex">
           <label class="form-label game-name hidden" for="game_platform">Game Name</label>
-          <input id="game_platform" name="game_platform" class="game-platform-input flex-item-grow" type="text" maxlength="60" placeholder="Game Platform"/>
+          <input id="game_platform" name="game_platform" autocomplete="off" class="game-platform-input flex-item-grow" type="text" maxlength="60" placeholder="Game Platform"/>
+          {{#if data}}
+          <ul class="platform-results hidden flex flex-item-grow" data-role="results_list">
+            {{#each data}}
+              {{#if this.id}}
+               <li class="platform-item hidden" data-game-id="{{this.id}}" data-value="{{this.name}}" data-role="result">{{this.name}}</li>
+              {{/if}}
+            {{/each}}
+          </ul>
+          {{/if}}
         </div>
       </div>
       <button class="submit-button button flex flex-item-grow" type="submit" data-role="search_button"/>
