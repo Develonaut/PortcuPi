@@ -18,11 +18,13 @@ module.exports = {
         var game_list = null;
         if (!error && response.statusCode == 200) {
           parseString(body, function (err, result) {
-            game_list = result.Data.Game;
+            if (_.isEmpty(result.Error) && !_.isEmpty(result.Data.Game)) {
+              game_list = result.Data.Game;
+            } else {
+              console.log('Something went wrong in the game list call.');
+            }
           });
           callback(game_list);
-        } else {
-          callback('getGameList error');
         }
       })
     },
@@ -32,17 +34,19 @@ module.exports = {
           game_platform_url = '&platform=' + game_platform,
           url = base_url + game_name_url + game_platform_url;
 
-      request(url, function (error, response, body) {
-        var game_list = null;
-        if (!error && response.statusCode == 200) {
-          parseString(body, function (err, result) {
-            game_list = result.Data.Game;
-          });
-          callback(game_list);
-        } else {
-          callback('getGameList error');
-        }
-      })
+        request(url, function (error, response, body) {
+          var game_list = null;
+          if (!error && response.statusCode == 200) {
+            parseString(body, function (err, result) {
+              if (_.isEmpty(result.Error)  && !_.isEmpty(result.Data.Game)) {
+                game_list = result.Data.Game;
+              } else {
+                console.log('Something went wrong in the platform game list call.');
+              }
+            });
+            callback(game_list);
+          }
+        });
     },
     getPlatformList: function (callback) {
       try {
@@ -56,13 +60,15 @@ module.exports = {
               var platform_list = null;
               if (!error && response.statusCode == 200) {
                 parseString(body, function (err, result) {
-                  platform_list = result.Data.Platforms[0].Platform;
+                  if (_.isEmpty(result.Error)  && !_.isEmpty(result.Data.Platforms)) {
+                    platform_list = result.Data.Platforms[0].Platform;
+                    cache_helper.writeToCache(cached_file_name, platform_list);
+                  } else {
+                    console.log('Something went wrong in the get platform list call.');
+                  }
                 });
-                cache_helper.writeToCache(cached_file_name, platform_list);
                 console.log('Sending back api data.');
                 callback(platform_list);
-              } else {
-                callback('getPlatformList Error');
               }
             });
           }
@@ -75,54 +81,53 @@ module.exports = {
       request('http://thegamesdb.net/api/GetGame.php?id=' + game_id, function (error, response, body) {
         var game = null;
         if (!error && response.statusCode == 200) {
-          
-          // console.log(body);
           parseString(body, function (err, result) {
-            game = result.Data.Game;
-            game.XML = xml_helper.buildXML(result.Data.Game);
+            if (_.isEmpty(result.Error)  && !_.isEmpty(result.Data.Game)) {
+              
+              game = result.Data.Game;
+              game.XML = xml_helper.buildXML(result.Data.Game);
+            
+                  // Get the image url's from the game data
+              var game_object = game[0];
+              // console.log(game_object);
+
+              // Let's see if the game we got has boxart to display. If it does 
+              // let's get the data we want and store it in the game object.
+              var box_art = {},
+                  game_has_images = _.has(game_object, 'Images');
+                  game_has_boxart = _.has(game_object.Images[0], 'boxart');
+
+              if (game_has_images && game_has_boxart) {
+                var game_box_art = game_object.Images[0].boxart; 
+
+                if (!_.isEmpty(game_box_art[0])) {
+                  box_art.front = game_box_art[0].$;
+
+                  // game_object.BoxArtSize = [game_box_art[0].]
+                  game_object.BoxArt = [box_art];
+                }
+
+                if (!_.isEmpty(game_box_art[1])) {
+                  box_art.front = game_box_art[1].$;
+                  box_art.back = game_box_art[0].$;
+                  game_object.BoxArt = [box_art];
+                }
+              }
+
+              // // Let's look and see if the game has genres for us to use.
+              var genres = '',
+                  game_has_genres = _.has(game_object, 'Genres');
+
+              if (game_has_genres) {
+                genres = game_object.Genres[0].genre[0];
+                game_object.Genres = [genres];
+              }
+              // console.log(game);
+            } else {
+              console.log('Something went wrong in the get game call.');
+            }
           });
-
-         // Get the image url's from the game data
-          var game_object = game[0];
-          // console.log(game_object);
-
-          // Let's see if the game we got has boxart to display. If it does 
-          // let's get the data we want and store it in the game object.
-          var box_art = {},
-              game_has_images = _.has(game_object, 'Images');
-              game_has_boxart = _.has(game_object.Images[0], 'boxart');
-
-          if (game_has_images && game_has_boxart) {
-            var game_box_art = game_object.Images[0].boxart; 
-
-            if (!_.isEmpty(game_box_art[0])) {
-              box_art.front = game_box_art[0].$;
-
-              // game_object.BoxArtSize = [game_box_art[0].]
-              game_object.BoxArt = [box_art];
-            }
-
-            if (!_.isEmpty(game_box_art[1])) {
-              box_art.front = game_box_art[1].$;
-              box_art.back = game_box_art[0].$;
-              game_object.BoxArt = [box_art];
-            }
-          }
-
-          // // Let's look and see if the game has genres for us to use.
-          var genres = '',
-              game_has_genres = _.has(game_object, 'Genres');
-
-          if (game_has_genres) {
-            genres = game_object.Genres[0].genre[0];
-            game_object.Genres = [genres];
-          }
-
-          // console.log(game);
-
           callback(game);
-        } else {
-          callback('getGame Error');
         }
       })
     }
