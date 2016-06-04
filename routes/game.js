@@ -26,9 +26,6 @@ router.get('/:game_name/', function(req, res, next) {
 });
 
 function getGame(game_id, res) {
-
-  cache_helper.initCache();
-
   game_list_helper.getGame(game_id, function(data) {
     modConf = utils.buildModConf("game", null, js_files, css_files, data);
     res.render('partials/game', modConf);
