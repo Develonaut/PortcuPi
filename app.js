@@ -45,11 +45,17 @@ app.use(function(req, res, next) {
 // will print stacktrace
 if (app.get('env') === 'development') {
   app.use(function(err, req, res, next) {
-    res.status(err.status || 500);
-    res.render('404', {
-      message: err.message,
-      error: err
-    });
+    var helper_path = "./private/js/server/helpers/min/",
+        utils = require(helper_path + 'utils-min.js');
+
+    var js_files = [];
+
+    var css_files = [
+      '/css/game_form-min.css'
+    ];
+
+    modConf = utils.buildModConf("404", null, js_files, css_files, null);
+    res.render('404', modConf);
   });
 }
 
@@ -57,10 +63,17 @@ if (app.get('env') === 'development') {
 // no stacktraces leaked to user
 app.use(function(err, req, res, next) {
   res.status(err.status || 500);
-  res.render('404', {
-    message: err.message,
-    error: {}
-  });
+    var helper_path = "./private/js/server/helpers/min/",
+        utils = require(helper_path + 'utils-min.js');
+
+    var js_files = [];
+
+    var css_files = [
+      '/css/game_form-min.css'
+    ];
+
+    modConf = utils.buildModConf("404", null, js_files, css_files, null);
+    res.render('404', modConf);
 });
 
 

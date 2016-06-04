@@ -56,25 +56,10 @@ function getGameList(game_name, res) {
 };
 
 function getPlatformSpecifiedGameList(game_platform, game_name, res) {
-  try {
-
-    console.log(game_name, game_platform);
-
-    game_list_helper.getPlatformSpecifiedGameList(game_platform, game_name, function(data) {
-      modConf = utils.buildModConf("result-list", null, js_files, css_files, data);
-      res.render('partials/result_list', modConf);
-    });
-
-  } catch (e) {
-
-    console.log('in the catch');
-    console.log(e);
-
-  }
-  // game_list_helper.getPlatformSpecifiedGameList(game_platform, game_name, function(data) {
-  //   modConf = utils.buildModConf("result-list", null, js_files, css_files, data);
-  //   res.render('partials/result_list', modConf);
-  // });
+  game_list_helper.getPlatformSpecifiedGameList(game_platform, game_name, function(data) {
+    modConf = utils.buildModConf("result-list", null, js_files, css_files, data);
+    res.render('partials/result_list', modConf);
+  });
 };
 
 module.exports = router;
