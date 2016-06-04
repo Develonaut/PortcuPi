@@ -5,6 +5,7 @@ var fs = require("fs");
 
 var helper_path = "../min/";
 var xml_helper = require(helper_path + 'xml_helpers-min.js');
+var cache_helper = require(helper_path + 'cache_helpers-min.js');
 
 var db_helper_vars = {
   temp_path_url: 'public/images/temp/',
@@ -44,17 +45,31 @@ module.exports = {
       })
     },
     getPlatformList: function (callback) {
-      request('http://thegamesdb.net/api/GetPlatformsList.php', function (error, response, body) {
-        var platform_list = null;
-        if (!error && response.statusCode == 200) {
-          parseString(body, function (err, result) {
-            platform_list = result.Data.Platforms[0].Platform;
-          });
-          callback(platform_list);
-        } else {
-          callback('getPlatformList Error');
-        }
-      })
+      try {
+        cached_file_name = 'PlatformList';
+        cache_helper.checkCachedData(cached_file_name, function(cached_data) {
+          if (!_.isEmpty(cached_data)) {
+            console.log('Sending back cached data.');
+            callback(cached_data);
+          } else {
+            request('http://thegamesdb.net/api/GetPlatformsList.php', function (error, response, body) {
+              var platform_list = null;
+              if (!error && response.statusCode == 200) {
+                parseString(body, function (err, result) {
+                  platform_list = result.Data.Platforms[0].Platform;
+                });
+                cache_helper.writeToCache(cached_file_name, platform_list);
+                console.log('Sending back api data.');
+                callback(platform_list);
+              } else {
+                callback('getPlatformList Error');
+              }
+            });
+          }
+        });
+      } catch (e) {
+        console.log(e);
+      }
     },
     getGame: function (game_id, callback) {
       request('http://thegamesdb.net/api/GetGame.php?id=' + game_id, function (error, response, body) {

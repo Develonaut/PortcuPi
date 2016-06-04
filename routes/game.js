@@ -5,6 +5,7 @@ var router = express.Router();
 var helper_path = "../../private/js/server/helpers/min/";
 // load helpers
 var game_list_helper = require(helper_path + 'games_db_helpers-min.js');
+var cache_helper = require(helper_path + 'cache_helpers-min.js');
 var utils = require(helper_path + 'utils-min.js');
 
 var result = {
@@ -25,6 +26,9 @@ router.get('/:game_name/', function(req, res, next) {
 });
 
 function getGame(game_id, res) {
+
+  cache_helper.initCache();
+
   game_list_helper.getGame(game_id, function(data) {
     modConf = utils.buildModConf("game", null, js_files, css_files, data);
     res.render('partials/game', modConf);

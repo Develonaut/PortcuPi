@@ -1,11 +1,13 @@
 var express = require('express');
 var router = express.Router();
 var path = require('path');
+var _ = require('underscore');
 
 // load helpers path
 var helper_path = "../../private/js/server/helpers/min/";
 // load helpers
 var game_list_helper = require(helper_path + 'games_db_helpers-min.js');
+var cache_helper = require(helper_path + 'cache_helpers-min.js');
 var utils = require(helper_path + 'utils-min.js');
 
 var result = {
@@ -30,16 +32,10 @@ router.get('/', function(req, res, next) {
 // Need to use a helper to get a list of console platforms from the API, then
 // use that to create a dropdown.
 function loadHomepage(res) {
-  // lets build the conf settings for the module
-  modConf = utils.buildModConf("game-form", null, js_files, css_files, null);
-  // then let's pass the build modConf data to our partial view
-  res.render('partials/game_form', modConf);
-
-  // TODO: We still want this functionality but in a typeahead situation
-  // client side and not on initial page load.
-  // game_list_helper.getPlatformList(function(data) {
-    // modConf = utils.buildModConf("game-form", null, js_files, css_files, data);
-  // });
+  game_list_helper.getPlatformList(function(data) {
+    modConf = utils.buildModConf("game-form", null, js_files, css_files, data);
+    res.render('partials/game_form', modConf);
+  });
 };
 
 module.exports = router;

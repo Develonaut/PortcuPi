@@ -15,9 +15,9 @@ module.exports = {
 
     var obj = obj[0];
     var builder = new xml2js.Builder();
-    var xml = builder.buildObject(obj, explicitRoot: false);
+    var xml = builder.buildObject(obj);
 
-    console.log(xml);
+    // console.log(xml);
 
     return xml;
   }
