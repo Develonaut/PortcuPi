@@ -17,13 +17,6 @@ function initPage (e) {
   search_button.addEventListener("click", checkFields.bind(search_button, mod));
 }
 
-function selectResult(input) {
-  var self = this;
-
-  console.log(input);
-  console.log(self);
-}
-
 // Going to clear out the inputs if the user hits this page, to
 // allow for fresh searches everytime.
 function clearInputs () {

@@ -6,10 +6,10 @@
       <h2><em>Here's</em> what we came up with.</h2>
       <h4>Don't like what you see? Wanna <a class="try-again-link link" href="/">try again?</a></h4>
     </div>
-    <div class="results-wrapper">
-      {{#if data}}
+    <div class="results-wrapper" data-role="results">
+      {{#if data.results}}
         <ul class="flex">
-        {{#each data}}
+        {{#each data.results}}
           <li class="result-item flex flex-item-grow" data-game-id="{{this.id}}">
               <a class="flex flex-item-grow icn-before" href="/game/{{this.GameTitle}}?id={{this.id}}">
               <div>{{this.GameTitle}}</div>

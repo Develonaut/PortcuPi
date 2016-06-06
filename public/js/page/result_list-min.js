@@ -1,1 +1,2 @@
-function showResults(){var s=$(".results-wrapper");s.addClass("results-found")}var page=$(document);page.on("ready",showResults);
+function initPage(e){var t=this,n=t.querySelector("[data-role=mod]");t.addEventListener("DOMContentLoaded",revealResults.bind(n))}function revealResults(){var e=this,t=e.querySelector("[data-role=results]");t.classList.add("results-found")}document.addEventListener("DOMContentLoaded",initPage.call(document));
+//# sourceMappingURL=./result_list-min.js.map

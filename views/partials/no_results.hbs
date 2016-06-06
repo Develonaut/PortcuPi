@@ -1,3 +1,7 @@
 <div>
-  <h1>We didn't find anything</h1>
+  <h2>Oh no, we couldn't find anything!</h2>
+  {{#if data.allow_game_search}}
+    <a class="button" href="/results/{{data.game_name}}">Search By Game Name</a>
+  {{/if}}
+
 </div>

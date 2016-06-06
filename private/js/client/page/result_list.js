@@ -1,10 +1,17 @@
-var page = $(document);
+document.addEventListener("DOMContentLoaded", initPage.call(document));
 
-page.on("ready", showResults);
+function initPage (e) {
+  var page = this,
+      mod = page.querySelector("[data-role=mod]");
 
-function showResults () {
-  var results = $('.results-wrapper');
+  page.addEventListener("DOMContentLoaded", revealResults.bind(mod));
+}
 
-  results.addClass('results-found');
+
+function revealResults () {
+  var mod = this,
+      results = mod.querySelector("[data-role=results]");
+
+  results.classList.add('results-found');
 
 }

@@ -15,16 +15,20 @@ var db_helper_vars = {
 module.exports = {
     getGameList: function(game_name, callback) {
       request('http://thegamesdb.net/api/GetGamesList.php?name=' + game_name, function (error, response, body) {
-        var game_list = null;
+          var results = {
+            game_name: null,
+            results: null 
+        };
         if (!error && response.statusCode == 200) {
           parseString(body, function (err, result) {
             if (_.isEmpty(result.Error) && !_.isEmpty(result.Data.Game)) {
-              game_list = result.Data.Game;
+              results.game_name = game_name;
+              results.results = result.Data.Game;
             } else {
               console.log('Something went wrong in the game list call.');
             }
           });
-          callback(game_list);
+          callback(results);
         }
       })
     },
@@ -35,16 +39,25 @@ module.exports = {
           url = base_url + game_name_url + game_platform_url;
 
         request(url, function (error, response, body) {
-          var game_list = null;
+          var results = {
+            allow_game_search: null,
+            game_name: null,
+            game_platform: null,
+            results: null 
+          };
           if (!error && response.statusCode == 200) {
             parseString(body, function (err, result) {
               if (_.isEmpty(result.Error)  && !_.isEmpty(result.Data.Game)) {
-                game_list = result.Data.Game;
+                results.game_name = game_name,
+                results.game_platform = game_platform,
+                results.results = result.Data.Game;
               } else {
+                results.game_name = game_name,
+                results.allow_game_search = true;
                 console.log('Something went wrong in the platform game list call.');
               }
             });
-            callback(game_list);
+            callback(results);
           }
         });
     },
