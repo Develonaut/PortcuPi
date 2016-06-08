@@ -24,12 +24,12 @@ hbs.registerPartials(__dirname + '/views/partials');
 
 // Route Set UP
 // Define route files
-var index = require('./routes/min/index-min'),
+var game_search = require('./routes/min/game_search-min'),
     results = require('./routes/min/results-min'),
     game = require('./routes/min/game-min');
 
 // Then set them to the url path
-app.use('/', index);
+app.use('/', game_search);
 app.use('/results', results);
 app.use('/game', game);
 

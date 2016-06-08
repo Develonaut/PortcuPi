@@ -1,6 +1,6 @@
-document.addEventListener("DOMContentLoaded", initPage.call(document));
+document.addEventListener("DOMContentLoaded", initResultsPage.call(document));
 
-function initPage (e) {
+function initResultsPage (e) {
   var page = this,
       mod = page.querySelector("[data-role=mod]");
 
@@ -13,5 +13,4 @@ function revealResults () {
       results = mod.querySelector("[data-role=results]");
 
   results.classList.add('results-found');
-
 }

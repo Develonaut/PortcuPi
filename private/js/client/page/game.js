@@ -1,9 +1,9 @@
-var page = document;
-page.addEventListener("DOMContentLoaded", initPage);
+document.addEventListener("DOMContentLoaded", initGamePage.bind(document));
 
-function initPage (e) {
-  var mod = document.querySelector("[data-role=mod]"),
-      download_button = document.querySelector("[data-role=download]");
+function initGamePage (e) {
+  var page = this, // document
+      mod = page.querySelector("[data-role=mod]"),
+      download_button = mod.querySelector("[data-role=download]");
 
   download_button.addEventListener("click", createDownloadLink);
 }

@@ -1,11 +1,12 @@
-document.addEventListener("DOMContentLoaded", initPage);
+document.addEventListener("DOMContentLoaded", navInit.bind(document));
 
-function initPage (e) {
-  var nav = document.querySelector("[data-role=nav]"),
-      sticky_nav = document.querySelector("[data-role=sticky_nav]"),
+function navInit (e) {
+  var page = this, // document
+      nav = page.querySelector("[data-role=nav]"),
+      sticky_nav = page.querySelector("[data-role=sticky_nav]"),
       nav_scroller = _.throttle(handleStickyNav.bind(sticky_nav, nav), 150);
 
-  document.addEventListener("scroll", nav_scroller);
+  page.addEventListener("scroll", nav_scroller);
   checkMetaFile.apply(sticky_nav, [nav]);
   handleStickyNav.apply(sticky_nav, [nav]);
 }

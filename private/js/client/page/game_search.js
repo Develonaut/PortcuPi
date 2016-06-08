@@ -1,6 +1,6 @@
-document.addEventListener("DOMContentLoaded", initPage.call(document));
+document.addEventListener("DOMContentLoaded", initGameSearchPage.call(document));
 
-function initPage (e) {
+function initGameSearchPage (e) {
   var page = this,
       mod = page.querySelector("[data-role=mod]"),
       search_button = mod.querySelector("[data-role=search_button]"),

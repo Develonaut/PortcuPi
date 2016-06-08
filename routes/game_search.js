@@ -16,11 +16,11 @@ var result = {
 };
 
 var js_files = [
-  '/js/page/game_form-min.js'
+  '/js/page/game_search-min.js'
 ];
 
 var css_files = [
-  '/css/game_form-min.css'
+  '/css/game_search-min.css'
 ];
 
 /* GET home page. */
