@@ -96,14 +96,11 @@ module.exports = {
         if (!error && response.statusCode == 200) {
           parseString(body, function (err, result) {
             if (_.isEmpty(result.Error)  && !_.isEmpty(result.Data.Game)) {
-              
               game = result.Data.Game;
               game.XML = xml_helper.buildXML(result.Data.Game);
             
-                  // Get the image url's from the game data
+              // Get the image url's from the game data
               var game_object = game[0];
-              // console.log(game_object);
-
               // Let's see if the game we got has boxart to display. If it does 
               // let's get the data we want and store it in the game object.
               var box_art = {},
@@ -113,14 +110,36 @@ module.exports = {
               if (game_has_images && game_has_boxart) {
                 var game_box_art = game_object.Images[0].boxart; 
 
+
                 if (!_.isEmpty(game_box_art[0])) {
+                  var adjusted_width = game_box_art[0].$.width / 2,
+                      adjusted_height = game_box_art[0].$.height / 2;
+                  // Assign some heights and width to use in markup
+                  game_box_art[0].$.adjusted_height = adjusted_height;
+                  game_box_art[0].$.adjusted_height = adjusted_width;
+                  // Add the available box art data to our box_art object
                   box_art.front = game_box_art[0].$;
 
-                  // game_object.BoxArtSize = [game_box_art[0].]
+                  // Add our new box art object to the original game object
                   game_object.BoxArt = [box_art];
                 }
 
                 if (!_.isEmpty(game_box_art[1])) {
+                  var adjusted_width = game_box_art[1].$.width / 2,
+                      adjusted_height = game_box_art[1].$.height / 2;
+                  // Assign some heights and width to use in markup
+                  game_box_art[1].$.adjusted_height = adjusted_height;
+                  game_box_art[1].$.adjusted_width = adjusted_width;
+
+                  var adjusted_width = game_box_art[0].$.width / 2,
+                      adjusted_height = game_box_art[0].$.height / 2;
+                  // Assign some heights and width to use in markup
+                  game_box_art[0].$.adjusted_height = adjusted_height;
+                  game_box_art[0].$.adjusted_width = adjusted_width;
+
+                  console.log(game_box_art[1].$);
+                  console.log(game_box_art[0].$);
+
                   box_art.front = game_box_art[1].$;
                   box_art.back = game_box_art[0].$;
                   game_object.BoxArt = [box_art];

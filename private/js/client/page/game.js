@@ -3,9 +3,26 @@ document.addEventListener("DOMContentLoaded", initGamePage.bind(document));
 function initGamePage (e) {
   var page = this, // document
       mod = page.querySelector("[data-role=mod]"),
-      download_button = mod.querySelector("[data-role=download]");
+      download_button = mod.querySelector("[data-role=download]"),
+      box_arts_parent = mod.querySelector(".box-art"),
+      box_arts = mod.querySelectorAll("[data-role=box_art]");
 
   download_button.addEventListener("click", createDownloadLink);
+  addImageConstraints(box_arts, box_arts_parent);
+}
+
+function addImageConstraints (box_arts, box_arts_parent) {
+  if (box_arts[0].offsetHeight && box_arts[0].offsetWidth) {
+      box_arts_parent.style.overflow = "hidden";
+      Array.prototype.forEach.call(box_arts, function(result_element, i) {
+        box_arts_parent.style.minHeight = box_arts[0].offsetHeight + 'px';
+        box_arts_parent.style.minWidth = box_arts[0].offsetWidth + 'px';
+        box_arts[i].style.minHeight = box_arts[0].offsetHeight + 'px';
+        box_arts[i].style.minWidth = box_arts[0].offsetWidth + 'px';
+      });
+  } else {
+    _.delay(addImageConstraints.bind(null, box_arts, box_arts_parent), 200);
+  }
 }
 
 // Let's store the user created text file in HTML5 local storage.

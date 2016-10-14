@@ -17,6 +17,14 @@ html, * {
   letter-spacing: 0.8px;
 }
 
+html {
+  box-sizing: border-box;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
 html,
 body {
   width: 100%;

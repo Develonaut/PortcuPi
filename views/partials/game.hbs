@@ -11,7 +11,7 @@
                 <div class="slide-button">next</div>
                 {{#each this.BoxArt}}
                   {{#each this}}
-                      <img class="{{this.side}}-box-art flex-item-base {{#if @first}}active{{/if}}" data-role="{{this.side}}-box-art" data-adaptive-background="" src="http://thegamesdb.net/banners/{{this.thumb}}"></img>
+                      <img class="{{this.side}}-box-art flex-item-base {{#if @first}}active{{/if}}" data-side="{{this.side}}_box_art "data-role="box_art" src="http://thegamesdb.net/banners/{{this.thumb}}"></img>
                   {{/each}}
                 {{/each}}
               </div>

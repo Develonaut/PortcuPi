@@ -63,5 +63,4 @@ function checkFields (mod, e) {
   loader.classList.remove("hidden");
   self.removeEventListener("click", checkFields);
   self.click();
-
 }

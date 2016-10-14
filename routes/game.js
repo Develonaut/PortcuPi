@@ -29,7 +29,7 @@ function getGame(game_id, res) {
   game_list_helper.getGame(game_id, function(data) {
     modConf = utils.buildModConf("game", null, js_files, css_files, data);
     res.render('partials/game', modConf);
-  });
+  });  
 };
 
 module.exports = router;
